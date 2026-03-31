@@ -1,0 +1,45 @@
+/* Cyber-Cyber (The Architect's HUD) */
+QWidget[class="base_widget_frame"] {
+    /* Background handled by Python for opacity support */
+    border: 1px solid #00FF99; /* Leapmotor Teal */
+    border-radius: 0px;
+}
+
+QLabel {
+    color: #00FF99;
+    font-family: "JetBrains Mono", "Consolas", monospace;
+}
+
+#header_label {
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #00FF99;
+}
+
+#clock_time {
+    font-size: 50pt;
+    font-weight: bold;
+    color: #00FF99;
+}
+
+#media_status {
+    color: #00FF99;
+    text-transform: uppercase;
+}
+
+#media_artist {
+    color: #008F5D;
+}
+
+QPushButton {
+    background-color: rgba(0, 255, 153, 0.1);
+    border: 1px solid #00FF99;
+    color: #00FF99;
+    border-radius: 0px;
+}
+
+QPushButton:hover {
+    background-color: #00FF99;
+    color: black;
+}

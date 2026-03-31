@@ -1,0 +1,28 @@
+/* Minimalist (White, Sharp) */
+QWidget#base_widget_frame {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 0px;
+}
+
+QLabel {
+    color: #000000;
+    font-family: "Roboto Mono", "Consolas", monospace;
+}
+
+#header_label {
+    font-size: 18pt;
+    text-transform: uppercase;
+}
+
+QPushButton {
+    background-color: transparent;
+    border: 1px solid #555;
+    color: white;
+    border-radius: 0px;
+}
+
+QPushButton:hover {
+    background-color: white;
+    color: black;
+}

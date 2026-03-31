@@ -1,0 +1,28 @@
+/* Linux (Yaru/Ubuntu Inspired) */
+QWidget#base_widget_frame {
+    background-color: rgba(60, 60, 60, 240);
+    border-top: 4px solid #E95420; /* Ubuntu Orange */
+    border-radius: 8px;
+}
+
+QLabel {
+    color: #F7F7F7;
+    font-family: "Ubuntu", sans-serif;
+}
+
+#header_label {
+    color: #E95420;
+    font-weight: bold;
+}
+
+QPushButton {
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 4px;
+}
+
+QPushButton:hover {
+    background-color: #E95420;
+    color: white;
+    border: 1px solid #E95420;
+}

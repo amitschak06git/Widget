@@ -1,0 +1,124 @@
+/* =============================================
+   Apple (Sonoma) Theme — AntiGravity Widgets
+   Mirrors macOS Sonoma desktop widget aesthetic
+   ============================================= */
+
+/* Global font stack — SF Pro if installed, else system fallback */
+QWidget {
+    font-family: "SF Pro Display", "SF Pro Text", "-apple-system", "Segoe UI", sans-serif;
+}
+
+/* Widget container — frosted glass panel */
+#base_widget_frame {
+    background-color: rgba(28, 28, 30, 0.78);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Hover: hairline border brightens slightly */
+#base_widget_frame[hovered="true"] {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* ---- Clock ---- */
+#clock_time {
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: 1px;
+}
+
+#clock_label {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 11pt;
+    font-weight: 500;
+}
+
+#clock_date {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 11pt;
+}
+
+/* ---- Header ---- */
+#header_label {
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 200;
+    letter-spacing: 8px;
+}
+
+/* ---- Date Widget ---- */
+#date_day_name {
+    color: #0A84FF;
+    font-weight: 500;
+}
+
+#date_full_date {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ---- Stats ---- */
+QLabel#stats_label {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 10pt;
+}
+
+/* ---- Calendar ---- */
+QLabel#calendar_month {
+    color: #0A84FF;
+    font-weight: 500;
+    padding-left: 4px;
+}
+
+QLabel#calendar_day_header {
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 500;
+    font-size: 9pt;
+}
+
+QLabel#calendar_day_normal {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 10pt;
+}
+
+QLabel#calendar_day_active {
+    background-color: #0A84FF;
+    color: white;
+    border-radius: 14px;
+    font-weight: 600;
+}
+
+/* ---- Media Widget ---- */
+QLabel#media_status {
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 600;
+    font-size: 11pt;
+}
+
+QLabel#media_artist {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 10pt;
+}
+
+QPushButton#media_btn {
+    background-color: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+QPushButton#media_btn:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+QPushButton#media_btn:pressed {
+    color: rgba(255, 255, 255, 0.35);
+    background-color: transparent;
+}
+
+/* ---- Resize Grip ---- */
+QSizeGrip {
+    image: none;
+    background: transparent;
+    width: 0px;
+    height: 0px;
+}

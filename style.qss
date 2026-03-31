@@ -1,0 +1,139 @@
+/* Global Defaults */
+QWidget {
+    font-family: "SF Pro Display", "SF Pro Text", "-apple-system", "Segoe UI", sans-serif;
+}
+
+/* Base Widget Container */
+#base_widget_frame {
+    background-color: rgba(28, 28, 30, 0.78);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Hover: subtle border brightening */
+#base_widget_frame[hovered="true"] {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Header Text */
+#header_label {
+    color: white;
+    font-weight: 900;
+    letter-spacing: 5px;
+}
+
+/* Stats Widget */
+QLabel#stats_label {
+    color: #DDDDDD;
+    font-size: 10pt;
+}
+
+/* Calendar */
+QLabel#calendar_month {
+    color: #FF5555; /* Accent */
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+QLabel#calendar_day_header {
+    color: #888888;
+    font-weight: bold;
+}
+
+QLabel#calendar_day_normal {
+    color: white;
+}
+
+QLabel#calendar_day_active {
+    background-color: #FF5555;
+    color: white;
+    border-radius: 10px;
+}
+
+/* Media Widget */
+QLabel#media_status {
+    color: white;
+    font-weight: bold;
+}
+
+QLabel#media_artist {
+    color: #BBBBBB;
+}
+
+QPushButton#media_btn {
+    background-color: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+QPushButton#media_btn:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+QPushButton#media_btn:pressed {
+    color: rgba(255, 255, 255, 0.35);
+    background-color: transparent;
+}
+
+/* Resize grip — appears on hover, subtle corner dots */
+QSizeGrip {
+    background-color: transparent;
+    image: none;
+    width: 16px;
+    height: 16px;
+    border-bottom-right-radius: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-top: none;
+    border-left: none;
+}
+
+/* ── Weather Widget ── */
+QLabel#weather_emoji {
+    font-size: 28px;
+    background: transparent;
+}
+
+QLabel#weather_temp {
+    font-size: 34px;
+    background: transparent;
+}
+
+QLabel#weather_location {
+    font-weight: 500;
+    background: transparent;
+}
+
+QLabel#weather_condition {
+    font-size: 9pt;
+    background: transparent;
+}
+
+QLabel#weather_section_label {
+    font-size: 9pt;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.4);
+    background: transparent;
+}
+
+QLabel#weather_attr {
+    font-size: 8pt;
+    color: rgba(255, 255, 255, 0.25);
+    background: transparent;
+}
+
+QPushButton#weather_expand_btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 14px;
+    border-radius: 14px;
+}
+
+QPushButton#weather_expand_btn:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+}

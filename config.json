@@ -1,0 +1,86 @@
+{
+    "show_date": true,
+    "show_media": true,
+    "use_system_media": true,
+    "positions": {
+        "clock": [
+            100,
+            100
+        ],
+        "date": [
+            15,
+            9
+        ],
+        "media": [
+            24,
+            509
+        ],
+        "header": [
+            964,
+            278
+        ],
+        "stats": [
+            580,
+            493
+        ],
+        "calendar": [
+            2329,
+            1231
+        ],
+        "weather": [
+            2154,
+            13
+        ]
+    },
+    "clocks": [
+        {
+            "id": "2490cbfd-f4a3-4980-abe3-3b95c909aa02",
+            "timezone": "Asia/Kolkata",
+            "label": "India",
+            "pos": [
+                -12,
+                164
+            ],
+            "visible": true
+        },
+        {
+            "id": "ac630314-31ff-4c7d-bcb2-36979c1dd803",
+            "timezone": "Pacific/Auckland",
+            "label": "New Zealand",
+            "pos": [
+                271,
+                11
+            ],
+            "visible": true
+        }
+    ],
+    "theme": "Apple (Sonoma)",
+    "font_family_time": "Dubai",
+    "font_family_label": "Chillax",
+    "widget_opacities": {
+        "header": 25,
+        "clock_64209778-5b69-4ca0-b275-9a1d08ce6bbc": 102,
+        "clock_2490cbfd-f4a3-4980-abe3-3b95c909aa02": 13,
+        "date": 13,
+        "media": 51,
+        "calendar": 102,
+        "stats": 13,
+        "clock_4efd6613-6d35-4ba2-a102-a4524459ac0c": 255,
+        "clock_ac630314-31ff-4c7d-bcb2-36979c1dd803": 13,
+        "weather": 179
+    },
+    "font_header": "Bespoke Stencil",
+    "font_calendar": "Segoe UI",
+    "transparency": 0,
+    "font_media_main": "Satoshi",
+    "font_media_sub": "Panchang",
+    "show_header": true,
+    "show_stats": true,
+    "show_calendar": true,
+    "calendar_watermark_opacity": 0.3,
+    "locked": false,
+    "show_weather": true,
+    "weather_lat": -41.2065,
+    "weather_location_name": "Wellington",
+    "weather_lon": 174.8102
+}

@@ -1,0 +1,57 @@
+/* Soft UI (Trend / Claymorphism) */
+QWidget[class="base_widget_frame"] {
+    /* Background handled by Python for opacity */
+    border: 1px solid rgba(255, 255, 255, 180);
+    border-radius: 40px; /* High border radius for pill shape */
+}
+
+QLabel {
+    color: #5A4E46; /* Soft Brown/Grey */
+    font-family: "Segoe UI Semibold", "Verdana", sans-serif;
+}
+
+#header_label {
+    color: #5A4E46;
+    font-weight: 600;
+    font-size: 26pt;
+}
+
+#clock_time {
+    color: #2C241E; /* Darker brown */
+    font-weight: 700;
+}
+
+#clock_date {
+    color: #5A4E46;
+    font-size: 11pt;
+}
+
+#media_status {
+    color: #8C7B70;
+    font-style: italic;
+}
+
+/* Calendar Specifics */
+#calendar_header {
+    color: #2C241E;
+    font-weight: bold;
+}
+
+QPushButton {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
+                                      stop:0 rgba(255, 255, 255, 200), 
+                                      stop:1 rgba(240, 230, 220, 180));
+    border: 1px solid rgba(255, 255, 255, 200);
+    border-radius: 15px;
+    color: #5A4E46;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: rgba(255, 255, 255, 255);
+}
+
+QPushButton:pressed {
+    background-color: rgba(230, 220, 210, 200);
+    border: 1px solid rgba(200, 190, 180, 200);
+}

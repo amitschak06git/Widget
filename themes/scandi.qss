@@ -1,0 +1,29 @@
+/* Scandinavian (Light, pastel, soft) */
+QWidget#base_widget_frame {
+    background-color: rgba(245, 245, 245, 230); /* Off-white */
+    border-radius: 25px;
+    border: 1px solid #E0E0E0;
+}
+
+QLabel {
+    color: #4A4A4A; /* Dark Grey */
+    font-family: "Helvetica Neue", "Segoe UI", sans-serif;
+}
+
+#header_label {
+    color: #5D8AA8; /* Muted Blue */
+    font-weight: 600;
+}
+
+QPushButton {
+    background-color: #FFFFFF;
+    border: 1px solid #D0D0D0;
+    border-radius: 12px;
+    color: #555;
+}
+
+QPushButton:hover {
+    background-color: #5D8AA8;
+    color: white;
+    border-color: #5D8AA8;
+}

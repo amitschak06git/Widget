@@ -1,0 +1,19 @@
+# Compiled output
+dist/
+build/
+*.spec
+__pycache__/
+*.pyc
+*.pyo
+
+# Runtime files
+crash.log
+weather_cache.json
+token.json
+
+# Secrets / credentials
+google_credentials.json
+
+# OS
+.DS_Store
+Thumbs.db

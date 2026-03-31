@@ -1,0 +1,44 @@
+/* Neumorphism (Tactile Logic) */
+QWidget[class="base_widget_frame"] {
+    /* Background handled by Python for opacity support */
+    /* Simulate light/dark shadow via borders since box-shadow is limited */
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-bottom: 2px solid #a3b1c6;
+    border-right: 2px solid #a3b1c6;
+    border-radius: 30px;
+}
+
+QLabel {
+    color: #4a4a4a;
+    font-family: "Segoe UI", sans-serif;
+}
+
+#header_label {
+    font-weight: 500;
+    color: #4a4a4a;
+    text-transform: uppercase;
+}
+
+#clock_time {
+    color: #4a4a4a;
+    font-weight: bold;
+}
+
+QPushButton {
+    background-color: #e0e5ec;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-bottom: 2px solid #a3b1c6;
+    border-right: 2px solid #a3b1c6;
+    border-radius: 10px;
+    color: #4a4a4a;
+}
+
+QPushButton:pressed {
+    /* Inset effect */
+    border-top: 2px solid #a3b1c6;
+    border-left: 2px solid #a3b1c6;
+    border-bottom: 2px solid #ffffff;
+    border-right: 2px solid #ffffff;
+}

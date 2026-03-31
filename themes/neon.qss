@@ -1,0 +1,40 @@
+/* Cyberpunk / Neon Theme */
+QWidget#base_widget_frame {
+    background-color: #050A14;
+    border: 1px solid #00FFFF;
+    border-radius: 2px;
+}
+
+QLabel {
+    color: #00FF99; /* Neon Green */
+    font-family: "Consolas", "Courier New", monospace;
+}
+
+#header_label {
+    color: #FF00FF; /* Magenta */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+#clock_time {
+    color: #00FFFF; /* Cyan */
+    font-weight: bold;
+    text-shadow: 0 0 5px #00FFFF;
+}
+
+#media_status {
+    color: #FF00FF;
+}
+
+QPushButton {
+    background-color: rgba(0, 255, 255, 0.1);
+    border: 1px solid #00FFFF;
+    color: #00FFFF;
+}
+
+QPushButton:hover {
+    background-color: #00FFFF;
+    color: black;
+    box-shadow: 0 0 10px #00FFFF; 
+}

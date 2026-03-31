@@ -1,6 +1,37 @@
 from PyQt6.QtWidgets import QWidget, QSizeGrip, QPushButton, QVBoxLayout, QGraphicsDropShadowEffect, QStyleOption, QStyle
-from PyQt6.QtCore import Qt, QPoint, QTimer, QDate, QPropertyAnimation, QEasingCurve
-from PyQt6.QtGui import QColor, QPalette, QPainter
+from PyQt6.QtCore import Qt, QPoint, QTimer, QDate, QPropertyAnimation, QEasingCurve, QRectF
+from PyQt6.QtGui import QColor, QPalette, QPainter, QPen
+
+
+class CornerGrip(QSizeGrip):
+    """
+    Resize grip styled as concentric quarter-circle arcs at the bottom-right corner —
+    mimicking macOS's subtle corner resize affordance. Inherits all QSizeGrip
+    resize behaviour; only the painting is overridden.
+    """
+    def paintEvent(self, event):
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+        painter.setBrush(Qt.BrushStyle.NoBrush)
+
+        w = float(self.width())
+        h = float(self.height())
+
+        # Three concentric arcs centred at the bottom-right corner (w, h).
+        # The grip is positioned so (w, h) lands exactly on the widget's corner.
+        # Each arc spans 90° from 12 o'clock (top) CCW to 9 o'clock (left),
+        # producing a ╯-shaped curve that hugs the corner and sweeps inward.
+        # Radii kept small so arcs stay tight at the corner rather than
+        # spreading across the grip.
+        for i, r in enumerate([4, 7, 10]):
+            alpha = 60 + i * 50          # 60, 110, 160 — brightest on the outermost arc
+            pen = QPen(QColor(255, 255, 255, alpha))
+            pen.setWidthF(1.3)
+            pen.setCapStyle(Qt.PenCapStyle.RoundCap)
+            painter.setPen(pen)
+            rect = QRectF(w - r, h - r, 2 * r, 2 * r)
+            painter.drawArc(rect, 90 * 16, 90 * 16)
+
 
 class BaseWidget(QWidget):
     def __init__(self, theme_manager=None, config_manager=None, widget_id=None, parent=None):
@@ -21,9 +52,10 @@ class BaseWidget(QWidget):
         # Dragging
         self.dragPosition = None
         
-        # Resize grip — shown only on hover so it stays out of the way
-        self.grip = QSizeGrip(self)
-        self.grip.resize(16, 16)
+        # Resize grip — corner arc, shown only on hover (bottom-right, opposite close button)
+        self.grip = CornerGrip(self)
+        self.grip.resize(24, 24)
+        self.grip.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         self.grip.hide()  # revealed in enterEvent
 
         # Close Button — macOS traffic light style: top-left, solid circle, no text
@@ -54,7 +86,9 @@ class BaseWidget(QWidget):
         
     def resizeEvent(self, event):
         rect = self.rect()
-        self.grip.move(rect.right() - 20, rect.bottom() - 20)
+        # Grip bottom-right must land exactly on the widget corner so (w,h) in
+        # CornerGrip.paintEvent correctly maps to the corner for arc centering.
+        self.grip.move(rect.right() - 24, rect.bottom() - 24)
         # Traffic light position: top-left, 8px inset
         self.btn_close.move(rect.left() + 8, rect.top() + 8)
         self.btn_close.raise_()

@@ -78,16 +78,10 @@ QPushButton#media_btn:pressed {
     background-color: transparent;
 }
 
-/* Resize grip — appears on hover, subtle corner dots */
+/* Resize grip — painted as corner arcs via CornerGrip.paintEvent, no QSS needed */
 QSizeGrip {
     background-color: transparent;
     image: none;
-    width: 16px;
-    height: 16px;
-    border-bottom-right-radius: 14px;
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    border-top: none;
-    border-left: none;
 }
 
 /* ── Weather Widget ── */

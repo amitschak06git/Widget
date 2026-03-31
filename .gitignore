@@ -6,8 +6,10 @@ __pycache__/
 *.pyc
 *.pyo
 
-# Runtime files
+# Runtime / log files
 crash.log
+debug.log
+media_debug.log
 weather_cache.json
 token.json
 

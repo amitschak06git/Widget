@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QWidget, QSizeGrip, QPushButton, QVBoxLayout, QGraphicsDropShadowEffect, QStyleOption, QStyle
-from PyQt6.QtCore import Qt, QPoint, QTimer, QDate, QPropertyAnimation, QEasingCurve, QRectF
+from PyQt6.QtCore import Qt, QPoint, QSize, QTimer, QDate, QPropertyAnimation, QEasingCurve, QRectF
 from PyQt6.QtGui import QColor, QPalette, QPainter, QPen
 
 
@@ -76,7 +76,21 @@ class BaseWidget(QWidget):
         
         # Mouse tracking for hover
         self.setMouseTracking(True)
-        
+
+    # ── Size hints ────────────────────────────────────────────────────────
+    # Returning the *current* size as the preferred size and QSize(0,0) as the
+    # minimum prevents Qt / the Windows DWM from auto-growing this window when
+    # a child label's sizeHint increases (e.g. after a font change).  Without
+    # these overrides, high-DPI screens (>96 DPI) trigger a runaway expansion
+    # loop: bigger font → larger minimumSizeHint → DWM forces window taller →
+    # resizeEvent fires → even bigger font → repeat until crash.
+
+    def sizeHint(self):
+        return self.size()       # preferred = current; no spontaneous resizing
+
+    def minimumSizeHint(self):
+        return QSize(0, 0)       # no floor; window manager won't auto-expand
+
     def paintEvent(self, event):
         # Critical for allowing Stylesheets to work on custom QWidgets with TranslucentBackground
         opt = QStyleOption()
@@ -247,7 +261,7 @@ class BaseWidget(QWidget):
 
     def apply_shadow(self, widget):
         shadow = QGraphicsDropShadowEffect()
-        shadow.setBlurRadius(24)
-        shadow.setColor(QColor(0, 0, 0, 80))
-        shadow.setOffset(0, 4)
+        shadow.setBlurRadius(30)
+        shadow.setColor(QColor(0, 0, 0, 115))  # ~0.45 opacity
+        shadow.setOffset(0, 10)
         widget.setGraphicsEffect(shadow)

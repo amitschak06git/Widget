@@ -1,133 +1,228 @@
-/* Global Defaults */
+/* ============================================================
+   Desktop Widget Suite — Editorial Design System
+   Editorial-Technical hybrid: warm ink hierarchy, glass surfaces,
+   warm amber accent (#E8A857).
+
+   Design tokens (oklch → rgba):
+     ink-1  #FAF7F2  warm white
+     ink-2  #D1C9BA  warm light gray
+     ink-3  #9A8F7C  medium warm gray
+     ink-4  #615848  dark warm gray
+     accent #E8A857  warm amber
+     glass-edge rgba(255,255,255,36)
+     line   rgba(255,255,255,23)
+   ============================================================ */
+
+/* ── Global ──────────────────────────────────────────────── */
 QWidget {
-    font-family: "SF Pro Display", "SF Pro Text", "-apple-system", "Segoe UI", sans-serif;
+    font-family: "Inter", "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
 }
 
-/* Base Widget Container */
-#base_widget_frame {
-    background-color: rgba(28, 28, 30, 0.78);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+QLabel {
+    background-color: transparent;
 }
 
-/* Hover: subtle border brightening */
-#base_widget_frame[hovered="true"] {
-    border: 1px solid rgba(255, 255, 255, 0.18);
+/* ── Clock ───────────────────────────────────────────────── */
+QLabel#clock_time {
+    color: #FAF7F2;
+    background-color: transparent;
 }
 
-/* Header Text */
-#header_label {
-    color: white;
-    font-weight: 900;
-    letter-spacing: 5px;
+QLabel#clock_label {
+    color: #9A8F7C;
+    background-color: transparent;
 }
 
-/* Stats Widget */
+QLabel#clock_date {
+    color: #9A8F7C;
+    background-color: transparent;
+}
+
+/* ── Date ────────────────────────────────────────────────── */
+QLabel#date_day_num {
+    color: #FAF7F2;
+    background-color: transparent;
+}
+
+QLabel#date_sub {
+    color: #9A8F7C;
+    background-color: transparent;
+}
+
+/* backwards-compat names */
+QLabel#date_day_name {
+    color: #FAF7F2;
+    background-color: transparent;
+}
+
+QLabel#date_full_date {
+    color: #9A8F7C;
+    background-color: transparent;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+QLabel#header_label {
+    color: #FAF7F2;
+    background-color: transparent;
+    font-style: italic;
+}
+
+QLabel#header_sub_left {
+    color: #9A8F7C;
+    background-color: transparent;
+}
+
+QLabel#header_sub_right {
+    color: #9A8F7C;
+    background-color: transparent;
+}
+
+/* ── Stats ───────────────────────────────────────────────── */
 QLabel#stats_label {
-    color: #DDDDDD;
+    color: #9A8F7C;
     font-size: 10pt;
+    background-color: transparent;
 }
 
-/* Calendar */
+/* ── Calendar ────────────────────────────────────────────── */
 QLabel#calendar_month {
-    color: #FF5555; /* Accent */
-    font-weight: bold;
-    padding-left: 5px;
+    color: #FAF7F2;
+    background-color: transparent;
+}
+
+QLabel#calendar_year {
+    color: #9A8F7C;
+    background-color: transparent;
 }
 
 QLabel#calendar_day_header {
-    color: #888888;
-    font-weight: bold;
+    color: #615848;
+    background-color: transparent;
 }
 
 QLabel#calendar_day_normal {
-    color: white;
+    color: #D1C9BA;
+    background-color: transparent;
 }
 
 QLabel#calendar_day_active {
-    background-color: #FF5555;
-    color: white;
-    border-radius: 10px;
+    background-color: #E8A857;
+    color: #121212;
+    border-radius: 14px;
 }
 
-/* Media Widget */
+QLabel#cal_event_time {
+    color: #9A8F7C;
+    background-color: transparent;
+}
+
+QLabel#cal_event_title {
+    color: #FAF7F2;
+    background-color: transparent;
+}
+
+/* ── Media ───────────────────────────────────────────────── */
 QLabel#media_status {
-    color: white;
-    font-weight: bold;
+    color: #FAF7F2;
+    background-color: transparent;
 }
 
 QLabel#media_artist {
-    color: #BBBBBB;
+    color: #9A8F7C;
+    background-color: transparent;
+}
+
+QLabel#media_album {
+    color: #615848;
+    background-color: transparent;
 }
 
 QPushButton#media_btn {
     background-color: transparent;
     border: none;
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 16px;
-    border-radius: 8px;
+    color: #D1C9BA;
+    font-size: 15px;
+    border-radius: 18px;
 }
 
 QPushButton#media_btn:hover {
-    color: white;
-    background-color: rgba(255, 255, 255, 0.08);
+    color: #FAF7F2;
+    background-color: rgba(255, 255, 255, 10);
 }
 
 QPushButton#media_btn:pressed {
-    color: rgba(255, 255, 255, 0.35);
+    color: rgba(250, 247, 242, 100);
     background-color: transparent;
 }
 
-/* Resize grip — painted as corner arcs via CornerGrip.paintEvent, no QSS needed */
-QSizeGrip {
-    background-color: transparent;
-    image: none;
+QPushButton#media_btn_primary {
+    background-color: #FAF7F2;
+    border: none;
+    color: #121212;
+    font-size: 15px;
+    border-radius: 24px;
 }
 
-/* ── Weather Widget ── */
+QPushButton#media_btn_primary:hover {
+    background-color: #E8A857;
+    color: #121212;
+}
+
+QPushButton#media_btn_primary:pressed {
+    background-color: rgba(250, 247, 242, 180);
+}
+
+/* ── Weather ─────────────────────────────────────────────── */
 QLabel#weather_emoji {
-    font-size: 28px;
+    font-size: 24px;
     background: transparent;
 }
 
 QLabel#weather_temp {
-    font-size: 34px;
+    color: #FAF7F2;
     background: transparent;
 }
 
 QLabel#weather_location {
+    color: #FAF7F2;
     font-weight: 500;
     background: transparent;
 }
 
 QLabel#weather_condition {
-    font-size: 9pt;
+    color: #9A8F7C;
     background: transparent;
 }
 
 QLabel#weather_section_label {
     font-size: 9pt;
     font-weight: 600;
-    letter-spacing: 1px;
-    color: rgba(255, 255, 255, 0.4);
+    color: #615848;
     background: transparent;
 }
 
 QLabel#weather_attr {
     font-size: 8pt;
-    color: rgba(255, 255, 255, 0.25);
+    color: rgba(97, 88, 72, 180);
     background: transparent;
 }
 
 QPushButton#weather_expand_btn {
-    background: transparent;
-    border: none;
-    color: rgba(255, 255, 255, 0.55);
-    font-size: 14px;
-    border-radius: 14px;
+    background: rgba(255, 255, 255, 10);
+    border: 1px solid rgba(255, 255, 255, 23);
+    color: #D1C9BA;
+    font-size: 12px;
+    border-radius: 16px;
 }
 
 QPushButton#weather_expand_btn:hover {
-    color: white;
-    background: rgba(255, 255, 255, 0.08);
+    color: #FAF7F2;
+    background: rgba(255, 255, 255, 20);
+    border-color: rgba(255, 255, 255, 41);
+}
+
+/* ── Resize grip ──────────────────────────────────────────── */
+QSizeGrip {
+    background-color: transparent;
+    image: none;
 }

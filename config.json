@@ -8,28 +8,28 @@
             100
         ],
         "date": [
-            15,
-            9
+            114,
+            728
         ],
         "media": [
-            24,
-            509
+            227,
+            423
         ],
         "header": [
-            964,
-            278
+            1093,
+            276
         ],
         "stats": [
-            580,
-            493
+            670,
+            464
         ],
         "calendar": [
-            2329,
-            1231
+            1686,
+            857
         ],
         "weather": [
-            2154,
-            13
+            2074,
+            23
         ]
     },
     "clocks": [
@@ -38,8 +38,8 @@
             "timezone": "Asia/Kolkata",
             "label": "India",
             "pos": [
-                -12,
-                164
+                10,
+                9
             ],
             "visible": true
         },
@@ -48,39 +48,42 @@
             "timezone": "Pacific/Auckland",
             "label": "New Zealand",
             "pos": [
-                271,
-                11
+                720,
+                37
             ],
             "visible": true
         }
     ],
-    "theme": "Apple (Sonoma)",
-    "font_family_time": "Dubai",
-    "font_family_label": "Chillax",
+    "theme": "Neumorphism (Tactile)",
+    "font_family_time": "Panchang",
+    "font_family_label": "Satoshi",
     "widget_opacities": {
-        "header": 25,
+        "header": 128,
         "clock_64209778-5b69-4ca0-b275-9a1d08ce6bbc": 102,
-        "clock_2490cbfd-f4a3-4980-abe3-3b95c909aa02": 13,
-        "date": 13,
+        "clock_2490cbfd-f4a3-4980-abe3-3b95c909aa02": 102,
+        "date": 128,
         "media": 51,
-        "calendar": 102,
+        "calendar": 153,
         "stats": 13,
         "clock_4efd6613-6d35-4ba2-a102-a4524459ac0c": 255,
-        "clock_ac630314-31ff-4c7d-bcb2-36979c1dd803": 13,
-        "weather": 128
+        "clock_ac630314-31ff-4c7d-bcb2-36979c1dd803": 128,
+        "weather": 153
     },
-    "font_header": "Bespoke Stencil",
-    "font_calendar": "Segoe UI",
+    "font_header": "Panchang",
+    "font_calendar": "Satoshi",
     "transparency": 0,
     "font_media_main": "Satoshi",
-    "font_media_sub": "Panchang",
+    "font_media_sub": "Satoshi",
     "show_header": true,
     "show_stats": true,
     "show_calendar": true,
-    "calendar_watermark_opacity": 0.3,
+    "calendar_watermark_opacity": 0.2,
     "locked": false,
     "show_weather": true,
     "weather_lat": -41.2065,
     "weather_location_name": "Wellington",
-    "weather_lon": 174.8102
+    "weather_lon": 174.8102,
+    "font_stats": "Cascadia Code",
+    "font_pairing": "Panchang",
+    "calendar_credentials_path": "D:/AG/Widget/credentials.json"
 }

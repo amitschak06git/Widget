@@ -3,6 +3,26 @@ import datetime
 from typing import List
 from calendar_service import CalendarProvider, CalendarEvent
 
+def _parse_dt(s: str) -> datetime.datetime:
+    """Parse a Google Calendar dateTime or date string into a naive local datetime."""
+    if not s:
+        return datetime.datetime.now()
+    # dateTime format: "2026-04-30T09:00:00+05:30" or "2026-04-30T09:00:00Z"
+    for fmt in ("%Y-%m-%dT%H:%M:%S%z", "%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%d"):
+        try:
+            parsed = datetime.datetime.strptime(s[:19], fmt[:len(s[:19])])
+            # If tz-aware, convert to local naive
+            if parsed.tzinfo is not None:
+                parsed = parsed.astimezone().replace(tzinfo=None)
+            return parsed
+        except ValueError:
+            continue
+    # Last resort: try just the date portion
+    try:
+        return datetime.datetime.strptime(s[:10], "%Y-%m-%d")
+    except ValueError:
+        return datetime.datetime.now()
+
 # Try imports, but don't fail hard if dependencies missing
 try:
     from google.auth.transport.requests import Request
@@ -77,13 +97,14 @@ class GoogleCalendarProvider(CalendarProvider):
                 # Simple parsing (naive)
                 # In robust app, use dateutil.parser
                 is_all_day = 'date' in item['start']
-                
-                # Populate object
+                start_dt = _parse_dt(start_str)
+                end_dt   = _parse_dt(end_str)
+
                 evt = CalendarEvent(
                     id=item['id'],
                     title=item.get('summary', 'No Title'),
-                    start=datetime.datetime.now(), # Placeholder if parsing fails
-                    end=datetime.datetime.now(),
+                    start=start_dt,
+                    end=end_dt,
                     description=item.get('description', ''),
                     location=item.get('location', ''),
                     is_all_day=is_all_day

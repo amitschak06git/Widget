@@ -1,5 +1,7 @@
 import sys
+import os
 import traceback
+import logging
 from datetime import datetime
 from PyQt6.QtWidgets import QApplication, QSystemTrayIcon, QMenu, QStyle
 from PyQt6.QtGui import QIcon, QAction
@@ -17,10 +19,46 @@ from stats_widget import StatsWidget
 from calendar_widget import CalendarWidget
 from weather_widget import WeatherWidget
 
+# ── Log rotation: keep only the last session ──────────────────────────────────
+def _rotate_log(path, backup_path):
+    try:
+        if os.path.exists(path):
+            if os.path.exists(backup_path):
+                os.remove(backup_path)
+            os.rename(path, backup_path)
+    except OSError:
+        pass
+
+_rotate_log("crash.log",       "crash.log.bak")
+_rotate_log("media_debug.log", "media_debug.log.bak")
+
+# ── Central app logger (writes to app.log, rotates on startup) ────────────────
+_rotate_log("app.log", "app.log.bak")
+
+logging.basicConfig(
+    filename="app.log",
+    level=logging.DEBUG,
+    format="[%(asctime)s] %(levelname)s %(name)s: %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
+# Also mirror WARNING+ to the console for quick triage.
+# sys.stdout is None in a console=False PyInstaller exe — guard against that
+# to prevent AttributeError crashes when any WARNING is emitted.
+if sys.stdout is not None:
+    _console = logging.StreamHandler(sys.stdout)
+    _console.setLevel(logging.WARNING)
+    _console.setFormatter(logging.Formatter("[%(asctime)s] %(levelname)s: %(message)s", "%H:%M:%S"))
+    logging.getLogger().addHandler(_console)
+
+log = logging.getLogger("manager")
+log.info("=== App starting ===")
+
 def exception_hook(exctype, value, tb):
+    msg = "".join(traceback.format_exception(exctype, value, tb))
+    log.critical("Uncaught exception:\n%s", msg)
+    # Also write to crash.log for easy spotting
     with open("crash.log", "a") as f:
-        f.write(f"[{datetime.now()}] Uncaught exception:\n")
-        traceback.print_exception(exctype, value, tb, file=f)
+        f.write(f"[{datetime.now()}] Uncaught exception:\n{msg}\n")
     sys.__excepthook__(exctype, value, tb)
 
 sys.excepthook = exception_hook
@@ -33,7 +71,7 @@ class WidgetManager:
         # Core Systems
         try:
             self.config = ConfigManager()
-            self.theme_manager = ThemeManager(self.config.get("theme", "Dark (Default)"))
+            self.theme_manager = ThemeManager(self.config.get("theme", "Dark (Default)"), self.config)
             self.system_media = SystemMediaManager()
             
             # Widgets Containers

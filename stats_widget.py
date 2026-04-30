@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QLabel, QHBoxLayout, QVBoxLayout, QWidget
+from PyQt6.QtWidgets import QLabel, QHBoxLayout, QVBoxLayout, QWidget, QLayout
 from PyQt6.QtCore import Qt, QTimer, QRectF
 from PyQt6.QtGui import QFont, QPainter, QColor, QPen
 from base_widget import BaseWidget
@@ -58,6 +58,7 @@ class StatsWidget(BaseWidget):
         self.config = config_manager
         
         layout = QHBoxLayout()
+        layout.setSizeConstraint(QLayout.SizeConstraint.SetNoConstraint)
         self.setLayout(layout)
         
         # 4 Stats: CPU, RAM, Disk, Net (mock or real)
@@ -82,8 +83,14 @@ class StatsWidget(BaseWidget):
     def apply_theme(self):
         if not self.theme_manager: return
         t = self.get_theme_with_opacity()
-        
-        base_style = f"QWidget#stats {{ background-color: {t['background']}; border-radius: {t['border_radius']}; }}"
+
+        base_style = (
+            f"QWidget#stats {{"
+            f"  background-color: {t['background']};"
+            f"  border-radius: {t.get('border_radius', '22px')};"
+            f"  border: 1px solid rgba(255, 255, 255, 36);"
+            f"}}"
+        )
         self.setStyleSheet(base_style + self.get_qss())
         
         font_name = self.config.get("font_stats", t['font_family']) if self.config else t['font_family']
